@@ -1,0 +1,55 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .add_college
+{
+        width:123px;
+        height:30px;
+	    color:#ffffff;
+        background-color:#BAEFF2ff;
+        border-radius:15px;
+        float:left;
+}
+.logout
+{
+        width:123px;
+        height:30px;
+	    color:#ffffff;
+        background-color:#BAEFF2;
+        border-radius:15px;
+        float:right;
+}
+    </style>
+     {% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}"  type="text/css">
+</head>
+<body>
+        <br>
+        <br>
+        <center>
+             <a href="add_item/"><button class="logout" type="submit" >Add Item</button></a>
+            <a href="logout/"><button class="logout" type="submit" >Logout</button></a><br>
+            <table id="customers">
+            <tr>
+                <th>Name</th>
+                <th>Company</th>
+                <th>Quantity</th>
+                <th>Amount</th>
+                <th>Actions</th>
+            </tr>
+                {% for i in result_set%}
+                <tr>
+                    <td>{{ i.name }}</td>
+                <td>{{ i.company }}</td>
+                <td>{{ i.quantity }}</td>
+                    <td>{{ i.amount }}</td>
+                    <td><a class="edit_delete" href="http://127.0.0.1:8000/groceries/items/edit/{{ i.name }}/">Edit</a>|<a class="edit_delete" href="http://127.0.0.1:8000/groceries/items/delete/{{ i.name }}/">Delete</a></td>
+                </tr>
+                {% endfor %}
+        </table>
+        </center>
+</body>
+</html>
